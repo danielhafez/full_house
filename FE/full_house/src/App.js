@@ -10,7 +10,7 @@ import BusinessSearch from "./components/BusinessSearch";
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div className='App'>
         <NavBar />
         <Route exact path="/" component={LandingPage} />
         <div>

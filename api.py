@@ -14,7 +14,7 @@ dataLayer = DataLayer()
 
 
 @app.route("/companies", )
-def get_all_students():
+def get_all_companies():
     companies = dataLayer.get_all_companies()
     companies_json = []
     for one_company in companies:
@@ -27,6 +27,20 @@ def get_all_students():
 
     return response
 
+
+@app.route("/get-company")
+def search_company():
+    key = request.args.get("key")
+    value = request.args.get("value")
+    company = dataLayer.find_one_company(key, value)
+    if not company:
+        abort(404)
+    response = app.response_class(
+        response=company.to_json(),
+        status=200,
+        mimetype="application/json")
+
+    return response
 
 
 if __name__ == "__main__":
