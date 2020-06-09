@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="713e8f06-df86-42a7-9c9e-ff78e8e1636b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/full_house/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/FE/full_house/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/full_house/src/components/Register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/FE/full_house/src/components/Register.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,9 +96,9 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.full_house" />
-      <item itemvalue="Python.data_layer" />
       <item itemvalue="Python.api" />
+      <item itemvalue="Python.data_layer" />
+      <item itemvalue="Python.full_house" />
     </list>
     <recent_temporary>
       <list>
