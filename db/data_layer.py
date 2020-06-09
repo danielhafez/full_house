@@ -1,5 +1,6 @@
 import pymongo
 from classes.company import Company
+from classes.user import User
 
 
 class DataLayer:
@@ -17,6 +18,13 @@ class DataLayer:
                           company_dict['email'], company_dict['maximum_capacity'],
                           company_dict['description'], company_dict['logo'])
         return company
+
+    @staticmethod
+    def create_user_object(user_dict):
+        user = User(user_dict['_id'], user_dict['first_name'], user_dict['last_name'],
+                    user_dict['email'], user_dict['password'],
+                    user_dict['company_id'])
+        return user
 
     def find_one_company(self, key, value):
         try:
@@ -54,4 +62,14 @@ class DataLayer:
                 return True
         except pymongo.errors:
             print(pymongo.errors)
+            return False
+
+    def find_one_user_by_name(self, value):
+        try:
+            find = self.__user_collection.find_one({'first_name': value})
+            user = self.create_user_object(find)
+            return user
+
+        except TypeError:
+            print("Company not found")
             return False
