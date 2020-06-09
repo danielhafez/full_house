@@ -64,12 +64,13 @@ class DataLayer:
             print(pymongo.errors)
             return False
 
-    def find_one_user_by_name(self, value):
+    def find_one_user(self, key, value):
         try:
-            find = self.__user_collection.find_one({'first_name': value})
+            find = self.__user_collection.find_one({key: value})
             user = self.create_user_object(find)
             return user
 
         except TypeError:
-            print("Company not found")
+            print("user not found")
             return False
+

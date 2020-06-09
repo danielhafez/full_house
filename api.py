@@ -76,10 +76,10 @@ def create_new_user():
 
 @app.route("/get-user")
 def search_user():
-    first_name = request.args.get("first_name")
-    user = dataLayer.find_one_user_by_name(first_name)
-    if not user:
-        abort(404)
+    key = request.args.get("key")
+    value = request.args.get("value")
+    user = dataLayer.find_one_user(key, value)
+
     response = app.response_class(
         response=user.to_json(),
         status=200,
