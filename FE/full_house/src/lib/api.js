@@ -6,10 +6,10 @@ export function getAllCompanies() {
   return axios.get(`${baseUrl}companies`);
 }
 
-export function createStudent(studentObj) {
-  return axios.post(`${baseUrl}create-student`, studentObj);
+export function createCompany(companyObj) {
+  return axios.post(`${baseUrl}create-company`, companyObj);
 }
 
-export function deleteStudent(key, value) {
-  return axios.post(`${baseUrl}get-company?key=${key}&value=${value}`);
+export function searchCompany(key, value) {
+  return axios.get(`${baseUrl}get-company?key=${key}&value=${value}`);
 }
