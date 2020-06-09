@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios, * as others from "axios";
+import { getAllCompanies } from "../lib/api";
 
 class BusinessSearch extends Component {
   constructor() {
@@ -14,10 +14,7 @@ class BusinessSearch extends Component {
   };
 
   getCompanies = () => {
-    axios({
-      method: "get",
-      url: "http://127.0.0.1:5000/companies",
-    })
+    getAllCompanies()
       .then((response) => {
         const companiesdata = response.data;
         this.setState({ company: companiesdata });
