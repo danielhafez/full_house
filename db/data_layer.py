@@ -1,5 +1,5 @@
 import pymongo
-from model.company import Company
+from classes.company import Company
 
 
 class DataLayer:
