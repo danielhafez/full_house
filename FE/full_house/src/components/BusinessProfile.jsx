@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import MaterialTable from 'material-table';
 import { getAllCompanies } from '../lib/api';
@@ -26,8 +27,13 @@ export default function BusinessSearch() {
         alert('Retriving data');
       });
   };
+=======
+import React from 'react'
+>>>>>>> 18de39cee912c4459227e458f3b784271878269e
 
+export default function BusinessProfile() {
   return (
+<<<<<<< HEAD
     <MaterialTable
       title='Editable Example'
       columns={state.columns}
@@ -71,4 +77,10 @@ export default function BusinessSearch() {
       }}
     />
   );
+=======
+    <div>
+      
+    </div>
+  )
+>>>>>>> 18de39cee912c4459227e458f3b784271878269e
 }

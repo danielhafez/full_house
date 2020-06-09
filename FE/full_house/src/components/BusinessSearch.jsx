@@ -50,9 +50,7 @@ class BusinessSearch extends Component {
             {
               icon: "checkbox",
               tooltip: "Open Company Page",
-              onClick: (event, rowData) => {
-                <Link to="/business_profile" />;
-              },
+              onClick: <Link to="/business_profile"></Link>,
             },
           ]}
         />
