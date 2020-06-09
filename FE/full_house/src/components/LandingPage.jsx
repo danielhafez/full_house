@@ -4,6 +4,8 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
+import logo from '../images/logo.png';
+import '../css/LandingPage.css';
 
 const LandingPage = () => {
   return (
@@ -12,20 +14,20 @@ const LandingPage = () => {
       <Container maxWidth='sm'>
         <Typography
           component='div'
-          style={{ backgroundColor: '#ffff', height: '50vh' }}
+          style={{
+            backgroundColor: '#ffff',
+            height: '50vh',
+            marginTop: '15px',
+          }}
         >
-          <img src='../images/Logo-fullhouse.png' alt='logo_fullHouse' />
+          <img src={logo} alt='logo' className='logo' />
         </Typography>
         <div>
           <Button variant='outlined' color='secondary'>
-            How full is your favourite place?
+            <Link to='/all_companies'>How full is your favourite place?</Link>
           </Button>
-          <Button
-            variant='outlined'
-            color='secondary'
-            onClick={LookForBusiness}
-          >
-            Register your Business now!
+          <Button variant='outlined' color='secondary'>
+            <Link to='/register'> Register your Business now!</Link>
           </Button>
         </div>
       </Container>
