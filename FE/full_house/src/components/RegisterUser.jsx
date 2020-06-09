@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
@@ -14,7 +13,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
 import logo from '../images/logo.png';
 
-class Register extends React.Component {
+class RegisterUser extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -83,11 +82,7 @@ class Register extends React.Component {
           {' '}
           <CssBaseline />
           <div className='paper'>
-            <img
-              src={logo}
-              alt='harry potter icon'
-              className='signup-logo'
-            ></img>
+            <img src={logo} alt='full-house logo' className='signup-logo'></img>
 
             <Snackbar open={this.state.success} autoHideDuration={1000}>
               <Alert
@@ -100,120 +95,73 @@ class Register extends React.Component {
             </Snackbar>
 
             <Typography component='h1' variant='h5' className='subtitle-signup'>
-              Register your organization{' '}
+              Create an account{' '}
             </Typography>
-            <form className='form' noValidate>
+            <form className='form' Validate>
               <Grid container spacing={2}>
-                <Grid item xs={12} sm={12}>
+                <Grid item xs={12} sm={6}>
                   <TextField
+                    autoComplete='fname'
                     onChange={(event) => {
-                      this.setState({ company_name: event.target.value });
+                      this.setState({ first_name: event.target.value });
                     }}
-                    name='companyName'
+                    name='firstName'
                     variant='outlined'
                     required
                     fullWidth
-                    id='companyName'
-                    label='Organization Name'
+                    id='firstName'
+                    label='First Name'
                     autoFocus
                   />
                 </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    variant='outlined'
+                    required
+                    fullWidth
+                    id='lastName'
+                    label='Last Name'
+                    name='lastName'
+                    autoComplete='lname'
+                    onChange={(event) => {
+                      this.setState({ last_name: event.target.value });
+                    }}
+                  />
+                </Grid>
+
                 <Grid item xs={12} sm={12}>
-                  <TextField
-                    variant='outlined'
-                    required
-                    fullWidth
-                    id='address'
-                    label='Address'
-                    name='address'
-                    autoComplete='address'
-                    onChange={(event) => {
-                      this.setState({ address: event.target.value });
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    variant='outlined'
-                    required
-                    fullWidth
-                    id='phone'
-                    label='Phone Number'
-                    name='phone'
-                    onChange={(event) => {
-                      this.setState({ phone: event.target.value });
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
                   <TextField
                     variant='outlined'
                     required
                     fullWidth
                     id='email'
-                    label="Organization's Email"
+                    label='Email'
                     name='email'
                     onChange={(event) => {
                       this.setState({ email: event.target.value });
                     }}
                   />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+
+                <Grid item xs={12} sm={12}>
                   <TextField
                     variant='outlined'
                     required
                     fullWidth
-                    type='number'
-                    id='maximum_capacity'
-                    label='Maximum Capacity'
-                    name='maximum_capacity'
-                    helperText='You can change this value at any time'
+                    type='password'
+                    id='password'
+                    label='Password'
+                    name='password'
+                    helperText=''
                     onChange={(event) => {
-                      this.setState({ maximum_capacity: event.target.value });
+                      this.setState({ password: event.target.value });
                     }}
                   />
                 </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    variant='outlined'
-                    fullWidth
-                    id='logo'
-                    label='Logo (url)'
-                    name='logo'
-                    onChange={(event) => {
-                      this.setState({ logo: event.target.value });
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={12}>
-                  <TextField
-                    variant='outlined'
-                    fullWidth
-                    id='description'
-                    label="Organization's Description"
-                    name='description'
-                    onChange={(event) => {
-                      this.setState({ description: event.target.value });
-                    }}
-                  />
-                </Grid>
-
-                {/* <Grid item xs={12} sm={6}>
-                <CheckboxesGroup passToMain={this.handleDataMagicSkills} />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <CheckboxesDesiredSkills
-                  passToSignup={this.handleDataDesiredSkills}
-                />
-              </Grid>
-              <Grid item xs={11}>
-                <CourseSelect passToSignup={this.handleDataCourses} />
-              </Grid> */}
               </Grid>
               <Grid container justify='flex-end'>
                 <Grid item></Grid>
               </Grid>
-              <ButtonSuccess submit={this.submit}></ButtonSuccess>
             </form>
           </div>
         </Card>
@@ -222,4 +170,4 @@ class Register extends React.Component {
   }
 }
 
-export default Register;
+export default RegisterUser;
