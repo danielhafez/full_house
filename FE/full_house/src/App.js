@@ -1,9 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './App.css';
+import './css/register.css';
 import LandingPage from './components/LandingPage';
 import Login from './components/Login';
 import Register from './components/Register';
+import Signup from './components/Signup';
 import NavBar from './components/NavBar';
 import BusinessSearch from './components/BusinessSearch';
 
@@ -15,7 +17,7 @@ function App() {
         <Route exact path='/' component={LandingPage} />
         <div>
           <Route exact path='/login' component={Login} />
-          <Route exact path='/register' component={Register} />
+          <Route exact path='/register' component={Signup} />
           <Route exact path='/all_companies' component={BusinessSearch} />
         </div>
       </div>

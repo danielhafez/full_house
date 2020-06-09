@@ -8,13 +8,11 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Card from '@material-ui/core/Card';
 import ButtonSuccess from './ButtonSuccess';
-// import CheckboxesGroup from './Checkbox';
-// import CheckboxesDesiredSkills from './CheckboxDesiredSkills';
-// import CourseSelect from './Courses';
 // // import { createStudent } from '../lib/api';
 import { Link } from 'react-router-dom';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
+import logo from '../images/logo.png';
 
 function Copyright() {
   return (
@@ -105,18 +103,15 @@ class Register extends React.Component {
         className='add-student-container'
         maxWidth='md'
       >
-        <Card clas>
+        <Card className='signup-card'>
           {' '}
           <CssBaseline />
           <div className='paper'>
             <img
-              src='https://static.thenounproject.com/png/7729-200.png'
+              src={logo}
               alt='harry potter icon'
               className='signup-logo'
             ></img>
-            <Typography component='h1' variant='h3' className='signup-title'>
-              FULL HOUSE{' '}
-            </Typography>
 
             <Snackbar open={this.state.success} autoHideDuration={1000}>
               <Alert
@@ -127,18 +122,16 @@ class Register extends React.Component {
                 Organization adedd successfully!
               </Alert>
             </Snackbar>
-            {/* {this.state.success && (
-           
-          )} */}
+
             <Typography component='h1' variant='h5'>
               Register your organization{' '}
             </Typography>
             <form className='form' noValidate>
               <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={12}>
                   <TextField
                     onChange={(event) => {
-                      this.setState({ first_name: event.target.value });
+                      this.setState({ company_name: event.target.value });
                     }}
                     name='companyName'
                     variant='outlined'
@@ -149,17 +142,82 @@ class Register extends React.Component {
                     autoFocus
                   />
                 </Grid>
+                <Grid item xs={12} sm={12}>
+                  <TextField
+                    variant='outlined'
+                    required
+                    fullWidth
+                    id='address'
+                    label='Address'
+                    name='address'
+                    autoComplete='address'
+                    onChange={(event) => {
+                      this.setState({ address: event.target.value });
+                    }}
+                  />
+                </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField
                     variant='outlined'
                     required
                     fullWidth
-                    id='lastName'
-                    label='Last Name'
-                    name='lastName'
-                    autoComplete='lname'
+                    id='phone'
+                    label='Phone Number'
+                    name='phone'
                     onChange={(event) => {
-                      this.setState({ last_name: event.target.value });
+                      this.setState({ phone: event.target.value });
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    variant='outlined'
+                    required
+                    fullWidth
+                    id='email'
+                    label="Organization's Email"
+                    name='email'
+                    onChange={(event) => {
+                      this.setState({ email: event.target.value });
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    variant='outlined'
+                    required
+                    fullWidth
+                    type='number'
+                    id='maximum_capacity'
+                    label='Maximum Capacity'
+                    name='maximum_capacity'
+                    helperText='You can change this value at any time'
+                    onChange={(event) => {
+                      this.setState({ maximum_capacity: event.target.value });
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    variant='outlined'
+                    fullWidth
+                    id='logo'
+                    label='Logo (url)'
+                    name='logo'
+                    onChange={(event) => {
+                      this.setState({ logo: event.target.value });
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={12}>
+                  <TextField
+                    variant='outlined'
+                    fullWidth
+                    id='description'
+                    label="Organization's Description"
+                    name='description'
+                    onChange={(event) => {
+                      this.setState({ description: event.target.value });
                     }}
                   />
                 </Grid>
