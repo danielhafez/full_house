@@ -1,0 +1,33 @@
+from flask import Flask, json, request, abort
+from db.data_layer import DataLayer
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app)
+cors = CORS(app, resources={
+    r"/*": {
+       "origins": "*"
+    }
+})
+
+dataLayer = DataLayer()
+
+
+@app.route("/companies", )
+def get_all_students():
+    companies = dataLayer.get_all_companies()
+    companies_json = []
+    for one_company in companies:
+        companies_json.append(one_company.to_json())
+
+    response = app.response_class(
+        response=json.dumps(companies_json),
+        status=200,
+        mimetype="application/json")
+
+    return response
+
+
+
+if __name__ == "__main__":
+    app.run()
