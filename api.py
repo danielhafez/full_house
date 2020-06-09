@@ -43,5 +43,22 @@ def search_company():
     return response
 
 
+@app.route("/create-company", methods=["POST"])
+def create_new_student():
+    data = request.get_json()
+    response = dataLayer.register_new_company(data)
+    if not response:
+        return 'Impossible to to create the new profile'
+
+    company = dataLayer.create_company_object(data)
+    response = app.response_class(
+        response=company.to_json(),
+        status=200,
+        mimetype="application/json"
+    )
+    return response
+
+
+
 if __name__ == "__main__":
     app.run()
