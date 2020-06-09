@@ -25,7 +25,7 @@ function App() {
           <Route exact path="/send-frame" component={SendFrame} />
           <Switch>
             <Route
-              path="business-dashboard/:id"
+              path="/business-dashboard/:id"
               children={<BusinessDashboard />}
             />
           </Switch>

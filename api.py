@@ -74,5 +74,20 @@ def create_new_user():
     return response
 
 
+@app.route("/get-user")
+def search_company():
+    first_name = request.args.get("first_name")
+    user = dataLayer.find_one_user_by_name(first_name)
+    if not user:
+        abort(404)
+    response = app.response_class(
+        response=user.to_json(),
+        status=200,
+        mimetype="application/json")
+
+    return response
+fojf
+
+
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0', port=80)
