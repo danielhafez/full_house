@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import Register from './Register';
 import { Link } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
+import RegisterUser from '../components/RegisterUser';
 
 function Copyright() {
   return (
@@ -46,7 +47,7 @@ function getSteps() {
 function getStepContent(stepIndex) {
   switch (stepIndex) {
     case 0:
-      return 'here signup page';
+      return <RegisterUser></RegisterUser>;
     case 1:
       return <Register></Register>;
     case 2:

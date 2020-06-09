@@ -82,7 +82,7 @@ export default function CircularIntegration(props) {
           className={buttonClassname}
           onClick={(event) => handleButtonClick(event)}
         >
-          {success ? <CheckIcon /> : <PlusIcon />}
+          {success ? <CheckIcon /> : <SaveIcon />}
         </Fab>
         {loading && (
           <CircularProgress size={68} className={classes.fabProgress} />
@@ -96,7 +96,7 @@ export default function CircularIntegration(props) {
           disabled={loading}
           onClick={(event) => handleButtonClick(event)}
         >
-          REGISTER YOUR BUSINESS{' '}
+          SAVE{' '}
         </Button>
         {loading && (
           <CircularProgress size={24} className={classes.buttonProgress} />
