@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import RegisterUser from '../components/RegisterUser';
 import FinalConfirmation from './FinalConfirmation';
-import { createCompany } from '../lib/api';
+import { createCompany, createUser } from '../lib/api';
 
 function Copyright() {
   return (
@@ -97,9 +97,15 @@ export default function HorizontalLabelPositionBelowStepper() {
     }
     try {
       userInfo.company_id = companyInfo.company_id;
-      console.log(userInfo);
+      let response = await createUser(userInfo);
+      let data = await response.data;
+      if (!data) {
+        alert('Impossible to register the user information');
+        return false;
+      }
     } catch (e) {
-      console.log(e);
+      alert(`Error: ${e}`);
+      return false;
     }
   };
 
