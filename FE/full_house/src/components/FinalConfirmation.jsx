@@ -52,6 +52,11 @@ class FinalConfirmation extends React.Component {
                   >
                     Back
                   </Button>
+                  <ButtonSuccess
+                    variant='contained'
+                    color='primary'
+                    onClick={this.submit}
+                  ></ButtonSuccess>
                   <Button
                     variant='contained'
                     color='primary'

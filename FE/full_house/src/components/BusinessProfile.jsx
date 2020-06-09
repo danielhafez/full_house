@@ -1,17 +1,17 @@
-import React from "react";
-import MaterialTable from "material-table";
-import { getAllCompanies } from "../lib/api";
+import React from 'react';
+import MaterialTable from 'material-table';
+import { getAllCompanies } from '../lib/api';
 
 export default function BusinessSearch() {
   const [state, setState] = React.useState({
     columns: [
-      { title: "Logo", field: "logo" },
-      { title: "Company Name", field: "company_name" },
+      { title: 'Logo', field: 'logo' },
+      { title: 'Company Name', field: 'company_name' },
     ],
     data: [],
   });
 
-  ccomponentDidMount = () => {
+  const componentDidMount = () => {
     getCompanies();
   };
 
@@ -23,13 +23,13 @@ export default function BusinessSearch() {
         return response.json;
       })
       .catch(() => {
-        alert("Retriving data");
+        alert('Retriving data');
       });
   };
 
   return (
     <MaterialTable
-      title="Editable Example"
+      title='Editable Example'
       columns={state.columns}
       data={state.data}
       editable={{
