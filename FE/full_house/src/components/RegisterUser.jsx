@@ -12,20 +12,16 @@ import { Link } from 'react-router-dom';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
 import logo from '../images/logo.png';
+import Button from '@material-ui/core/Button';
 
 class RegisterUser extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      company_name: '',
-      address: '',
-      phone: '',
+      first_name: '',
+      last_name: '',
       email: '',
-      maximum_capacity: '',
-      description: '',
-      logo: '',
-      laoding: false,
-      success: false,
+      password: '',
     };
   }
 
@@ -39,35 +35,33 @@ class RegisterUser extends React.Component {
 
   submit = async (event) => {
     event.preventDefault();
-    const checkAddress = this.validateField(this.state.address);
-    const checkCompanyName = this.validateField(this.state.company_name);
-    if (checkAddress == false || checkCompanyName == false) {
-      alert('Please insert a valid address and company name');
+    const checkEmail = this.validateField(this.state.email);
+    const checkPassword = this.validateField(this.state.password);
+    if (checkEmail == false || checkPassword == false) {
+      alert('Please insert a valid email and password');
     } else {
-      const companyObj = {
-        company_id: Math.random() * 100,
-        company_name: this.state.company_name,
-        address: this.state.address,
-        phone: this.state.phone,
+      const userObj = {
+        first_name: this.state.first_name,
+        last_name: this.state.last_name,
         email: this.state.email,
-        maximum_capacity: this.state.maximum_capacity,
-        description: this.state.description,
-        logo: this.state.logo,
+        password: this.state.password,
       };
-      try {
-        let response = await createCompany(companyObj);
-        let data = await response.data;
-        console.log(data);
-        if (data) {
-          this.setState({ success: true });
-          return true;
-        } else {
-          return false;
-        }
-      } catch (e) {
-        alert(`Error: ${e}`);
-        return false;
-      }
+      this.props.handleNext(userObj);
+
+      //   try {
+      //     let response = await createCompany(companyObj);
+      //     let data = await response.data;
+      //     console.log(data);
+      //     if (data) {
+      //       this.setState({ success: true });
+      //       return true;
+      //     } else {
+      //       return false;
+      //     }
+      //   } catch (e) {
+      //     alert(`Error: ${e}`);
+      //     return false;
+      //   }
     }
   };
 
@@ -159,8 +153,25 @@ class RegisterUser extends React.Component {
                   />
                 </Grid>
               </Grid>
-              <Grid container justify='flex-end'>
-                <Grid item></Grid>
+              <Grid container justify='center'>
+                <Grid className='margin-top'>
+                  <Button
+                    disabled={this.props.activeStep === 0}
+                    onClick={this.props.handleBack}
+                    className={this.props.classes}
+                  >
+                    Back
+                  </Button>
+                  <Button
+                    variant='contained'
+                    color='primary'
+                    onClick={this.submit}
+                  >
+                    {this.props.activeStep === this.props.steps.length - 1
+                      ? 'Finish'
+                      : 'Next'}
+                  </Button>
+                </Grid>
               </Grid>
             </form>
           </div>

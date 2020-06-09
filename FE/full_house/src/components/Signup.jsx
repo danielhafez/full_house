@@ -15,7 +15,7 @@ function Copyright() {
     <Typography variant='body2' color='textSecondary' align='center'>
       {'Copyright © '}
       <Link color='inherit' to='https://material-ui.com/'>
-        Group #1 Hackathon 2020
+        Group #1 Hackathon
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -44,27 +44,34 @@ function getSteps() {
   ];
 }
 
-function getStepContent(stepIndex) {
-  switch (stepIndex) {
-    case 0:
-      return <RegisterUser></RegisterUser>;
-    case 1:
-      return <Register></Register>;
-    case 2:
-      return 'here link to company page';
-    default:
-      return 'Unknown stepIndex';
-  }
-}
-
 export default function HorizontalLabelPositionBelowStepper() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
+  const [userInfo, setUserInfo] = React.useState({});
+  const [companyInfo, setCompanyInfo] = React.useState({});
   const steps = getSteps();
 
-  const handleNext = () => {
+  const handleNext = (userInformation) => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    if (userInformation) {
+      setUserInfo(userInformation);
+    }
   };
+
+  const handleNextCompany = (companyInfo) => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    if (companyInfo) {
+      setCompanyInfo(companyInfo);
+    }
+  };
+
+  React.useEffect(() => {
+    console.log(companyInfo);
+  }, [companyInfo]);
+
+  React.useEffect(() => {
+    console.log(userInfo);
+  }, [userInfo]);
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
@@ -74,6 +81,36 @@ export default function HorizontalLabelPositionBelowStepper() {
     setActiveStep(0);
   };
 
+  const getStepContent = (stepIndex) => {
+    switch (stepIndex) {
+      case 0:
+        return (
+          <div>
+            <RegisterUser
+              handleNext={handleNext}
+              handleBack={handleBack}
+              clasess={classes.backButton}
+              activeStep={activeStep}
+              steps={steps}
+            ></RegisterUser>
+          </div>
+        );
+      case 1:
+        return (
+          <Register
+            handleNext={handleNextCompany}
+            handleBack={handleBack}
+            clasess={classes.backButton}
+            activeStep={activeStep}
+            steps={steps}
+          ></Register>
+        );
+      case 2:
+        return 'here link to company page';
+      default:
+        return 'Unknown stepIndex';
+    }
+  };
   return (
     <div className={classes.root}>
       <Stepper activeStep={activeStep} alternativeLabel>

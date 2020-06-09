@@ -55,20 +55,23 @@ class Register extends React.Component {
         description: this.state.description,
         logo: this.state.logo,
       };
-      try {
-        let response = await createCompany(companyObj);
-        let data = await response.data;
-        console.log(data);
-        if (data) {
-          this.setState({ success: true });
-          return true;
-        } else {
-          return false;
-        }
-      } catch (e) {
-        alert(`Error: ${e}`);
-        return false;
-      }
+
+      this.props.handleNext(companyObj);
+
+      //   try {
+      //     let response = await createCompany(companyObj);
+      //     let data = await response.data;
+      //     console.log(data);
+      //     if (data) {
+      //       this.setState({ success: true });
+      //       return true;
+      //     } else {
+      //       return false;
+      //     }
+      //   } catch (e) {
+      //     alert(`Error: ${e}`);
+      //     return false;
+      //   }
     }
   };
 
@@ -210,10 +213,27 @@ class Register extends React.Component {
                 <CourseSelect passToSignup={this.handleDataCourses} />
               </Grid> */}
               </Grid>
-              <Grid container justify='flex-end'>
-                <Grid item></Grid>
+              <Grid container justify='center'>
+                <Grid className='margin-top'>
+                  <Button
+                    disabled={this.props.activeStep === 0}
+                    onClick={this.props.handleBack}
+                    className={this.props.classes}
+                  >
+                    Back
+                  </Button>
+                  <Button
+                    variant='contained'
+                    color='primary'
+                    onClick={this.submit}
+                  >
+                    {this.props.activeStep === this.props.steps.length - 1
+                      ? 'Finish'
+                      : 'Next'}
+                  </Button>
+                </Grid>
               </Grid>
-              <ButtonSuccess submit={this.submit}></ButtonSuccess>
+              {/* <ButtonSuccess submit={this.submit}></ButtonSuccess> */}
             </form>
           </div>
         </Card>
