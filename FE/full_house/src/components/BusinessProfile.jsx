@@ -1,5 +1,6 @@
 import React from "react";
 import MaterialTable from "material-table";
+import { getAllCompanies } from "../lib/api";
 
 export default function BusinessSearch() {
   const [state, setState] = React.useState({
@@ -10,11 +11,11 @@ export default function BusinessSearch() {
     data: [],
   });
 
-  componentDidMount = () => {
-    this.getCompanies();
+  ccomponentDidMount = () => {
+    getCompanies();
   };
 
-  getCompanies = () => {
+  const getCompanies = () => {
     getAllCompanies()
       .then((response) => {
         const companiesdata = response.data;
