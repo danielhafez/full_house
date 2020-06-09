@@ -6,6 +6,21 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Register from './Register';
+import { Link } from 'react-router-dom';
+import Box from '@material-ui/core/Box';
+
+function Copyright() {
+  return (
+    <Typography variant='body2' color='textSecondary' align='center'>
+      {'Copyright © '}
+      <Link color='inherit' to='https://material-ui.com/'>
+        Group #1 Hackathon 2020
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -94,6 +109,9 @@ export default function HorizontalLabelPositionBelowStepper() {
             </div>
           </div>
         )}
+        <Box mt={5} mb={20} pb={5}>
+          <Copyright />
+        </Box>
       </div>
     </div>
   );

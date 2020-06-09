@@ -14,19 +14,6 @@ import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
 import logo from '../images/logo.png';
 
-function Copyright() {
-  return (
-    <Typography variant='body2' color='textSecondary' align='center'>
-      {'Copyright © '}
-      <Link color='inherit' to='https://material-ui.com/'>
-        Group #1 Hackathon 2020
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
 class Register extends React.Component {
   constructor(props) {
     super(props);
@@ -123,7 +110,7 @@ class Register extends React.Component {
               </Alert>
             </Snackbar>
 
-            <Typography component='h1' variant='h5'>
+            <Typography component='h1' variant='h5' className='subtitle-signup'>
               Register your organization{' '}
             </Typography>
             <form className='form' noValidate>
@@ -240,9 +227,6 @@ class Register extends React.Component {
               </Grid>
             </form>
           </div>
-          <Box mt={5} mb={20} pb={5}>
-            <Copyright />
-          </Box>
         </Card>
       </Container>
     );
