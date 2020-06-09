@@ -11,6 +11,8 @@ from keras.models import load_model
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
 import config
+from flask_cors import CORS
+
 
 
 class BoundBox:
@@ -160,7 +162,12 @@ def get_boxes(boxes, labels, thresh):
 
 
 app = Flask(__name__)
-
+CORS(app)
+cors = CORS(app, resources={
+    r"/*": {
+       "origins": "*"
+    }
+})
 
 @app.route('/')
 def main_page():

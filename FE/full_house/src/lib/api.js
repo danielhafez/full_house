@@ -17,3 +17,13 @@ export function createUser(userObj) {
 export function searchCompany(key, value) {
   return axios.get(`${baseUrl}get-company?key=${key}&value=${value}`);
 }
+
+export function sendImage(img) {
+  return axios.post(`${baseUrl}predict`, img, {
+    headers: {
+      accept: 'application/json',
+      'Accept-Language': 'en-US,en;q=0.8',
+      'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
+    },
+  });
+}
