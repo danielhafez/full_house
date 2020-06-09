@@ -59,6 +59,22 @@ def create_new_company():
     return response
 
 
+@app.route("/create-user", methods=["POST"])
+def create_new_user():
+    data = request.get_json()
+    response = dataLayer.register_user(data)
+    if not response:
+        return 'Impossible to to create the new user'
+
+    response = app.response_class(
+        response='successfully added new student',
+        status=200,
+        mimetype="application/json"
+    )
+    return response
+
+
+
 
 
 if __name__ == "__main__":

@@ -8,6 +8,7 @@ class DataLayer:
         self.__myclient = pymongo.MongoClient('mongodb+srv://danielhafez:hackathon2020@cluster0-9phti.mongodb.net/test')
         self.__db = self.__myclient["full_house"]
         self.__companies_collection = self.__db["companies"]
+        self.__user_collection = self.__db["users"]
 
     @staticmethod
     def create_company_object(company_dict):
@@ -42,6 +43,15 @@ class DataLayer:
             if company_id is not None:
                 return True
 
+        except pymongo.errors:
+            print(pymongo.errors)
+            return False
+
+    def register_user(self, user_dict):
+        try:
+            user_id = self.__user_collection.insert_one(user_dict).inserted_id
+            if user_id is not None:
+                return True
         except pymongo.errors:
             print(pymongo.errors)
             return False
