@@ -18,29 +18,17 @@ class Register extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      first_name: '',
-      last_name: '',
-      existing_magic_skills: {},
-      desired_magic_skills: [],
-      courses: [],
-      created_at: '',
-      updated_at: '',
+      company_name: '',
+      address: '',
+      phone: '',
+      email: '',
+      maximum_capacity: '',
+      description: '',
+      logo: '',
       laoding: false,
       success: false,
     };
   }
-
-  handleDataMagicSkills = (dataFromCheckbox) => {
-    this.setState({ existing_magic_skills: dataFromCheckbox });
-  };
-
-  handleDataDesiredSkills = (dataFromCheckbox) => {
-    this.setState({ desired_magic_skills: dataFromCheckbox });
-  };
-
-  handleDataCourses = (dataFromCourses) => {
-    this.setState({ courses: dataFromCourses });
-  };
 
   validateField = (fieldValue) => {
     if (fieldValue === ' ' || fieldValue === '' || fieldValue == false) {
@@ -52,19 +40,20 @@ class Register extends React.Component {
 
   submit = async (event) => {
     event.preventDefault();
-    const checkName = this.validateField(this.state.first_name);
-    const checkLastName = this.validateField(this.state.last_name);
-    if (checkName == false || checkLastName == false) {
-      alert('Please insert a valid name and last name');
+    const checkAddress = this.validateField(this.state.address);
+    const checkCompanyName = this.validateField(this.state.company_name);
+    if (checkAddress == false || checkCompanyName == false) {
+      alert('Please insert a valid address and company name');
     } else {
       const studentObj = {
-        first_name: this.state.first_name,
-        last_name: this.state.last_name,
-        existing_magic_skills: this.state.existing_magic_skills,
-        desired_magic_skills: this.state.desired_magic_skills,
-        courses: this.state.courses,
-        created_at: new Date().toISOString(),
-        last_update: new Date().toISOString(),
+        company_id: (Math.random() * 100), 
+        company_name: this.state.company_name, 
+        address: this.state.address, 
+        phone:  this.state.phone, 
+        email: this.state.email,
+        maximum_capacity: this.state.maximum_capacity,
+        description: this.state.description, 
+        logo = this.state.logo
       };
       //   try {
       //     let response = await createStudent(studentObj);
@@ -221,7 +210,6 @@ class Register extends React.Component {
                 <CourseSelect passToSignup={this.handleDataCourses} />
               </Grid> */}
               </Grid>
-              <ButtonSuccess submit={this.submit}></ButtonSuccess>
               <Grid container justify='flex-end'>
                 <Grid item></Grid>
               </Grid>
