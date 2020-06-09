@@ -36,3 +36,12 @@ class DataLayer:
 
         return store_companies
 
+    def register_new_company(self, company_dict):
+        try:
+            company_id = self.__companies_collection.insert_one(company_dict).inserted_id
+            if company_id is not None:
+                return True
+
+        except pymongo.errors:
+            print(pymongo.errors)
+            return False
