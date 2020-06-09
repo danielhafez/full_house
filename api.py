@@ -6,7 +6,7 @@ app = Flask(__name__)
 CORS(app)
 cors = CORS(app, resources={
     r"/*": {
-       "origins": "*"
+        "origins": "*"
     }
 })
 
@@ -72,9 +72,6 @@ def create_new_user():
         mimetype="application/json"
     )
     return response
-
-
-
 
 
 if __name__ == "__main__":
