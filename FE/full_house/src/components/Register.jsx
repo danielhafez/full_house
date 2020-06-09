@@ -6,12 +6,12 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-import CheckboxesGroup from './Checkbox';
-import CheckboxesDesiredSkills from './CheckboxDesiredSkills';
-import CourseSelect from './Courses';
-import { createStudent } from '../lib/api';
+// import CheckboxesGroup from './Checkbox';
+// import CheckboxesDesiredSkills from './CheckboxDesiredSkills';
+// import CourseSelect from './Courses';
+// // import { createStudent } from '../lib/api';
 import { Link } from 'react-router-dom';
-import ButtonSuccess from './ButtonSuccess';
+// import ButtonSuccess from './ButtonSuccess';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
 
@@ -80,20 +80,20 @@ class Register extends React.Component {
         created_at: new Date().toISOString(),
         last_update: new Date().toISOString(),
       };
-      try {
-        let response = await createStudent(studentObj);
-        let data = await response.data;
-        console.log(data);
-        if (data) {
-          this.setState({ success: true });
-          return true;
-        } else {
-          return false;
-        }
-      } catch (e) {
-        alert(`Error: ${e}`);
-        return false;
-      }
+      //   try {
+      //     let response = await createStudent(studentObj);
+      //     let data = await response.data;
+      //     console.log(data);
+      //     if (data) {
+      //       this.setState({ success: true });
+      //       return true;
+      //     } else {
+      //       return false;
+      //     }
+      //   } catch (e) {
+      //     alert(`Error: ${e}`);
+      //     return false;
+      //   }
     }
   };
 
@@ -162,7 +162,7 @@ class Register extends React.Component {
                 />
               </Grid>
 
-              <Grid item xs={12} sm={6}>
+              {/* <Grid item xs={12} sm={6}>
                 <CheckboxesGroup passToMain={this.handleDataMagicSkills} />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -172,9 +172,9 @@ class Register extends React.Component {
               </Grid>
               <Grid item xs={11}>
                 <CourseSelect passToSignup={this.handleDataCourses} />
-              </Grid>
+              </Grid> */}
             </Grid>
-            <ButtonSuccess submit={this.submit}></ButtonSuccess>
+            {/* <ButtonSuccess submit={this.submit}></ButtonSuccess> */}
             <Grid container justify='flex-end'>
               <Grid item></Grid>
             </Grid>
