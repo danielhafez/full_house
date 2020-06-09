@@ -17,18 +17,10 @@ const LandingPage = () => {
           <img src="../images/Logo-fullhouse.png" alt="logo_fullHouse" />
         </Typography>
         <div>
-          <Button
-            variant="outlined"
-            color="secondary"
-            onClick={LookForBusiness}
-          >
-            How full is your favourite place?
+          <Button variant="outlined" color="secondary">
+            <Link to="/all_companies">How full is your favourite place?</Link>
           </Button>
-          <Button
-            variant="outlined"
-            color="secondary"
-            onClick={LookForBusiness}
-          >
+          <Button variant="outlined" color="secondary">
             Register your Business now!
           </Button>
         </div>
