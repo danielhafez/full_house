@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { getAllCompanies } from "../lib/api";
-
+import "../css/BusinessSearch.css";
 class BusinessSearch extends Component {
   constructor() {
     super();
@@ -35,7 +35,19 @@ class BusinessSearch extends Component {
             {this.state.company.map((post) => {
               console.log(JSON.parse(post));
 
-              return <div>{JSON.parse(post).company_name}</div>;
+              return (
+                <div>
+                  <img
+                    src={JSON.parse(post).logo}
+                    alt="company_logo"
+                    className="company_logo"
+                  />
+                  <h2 className="company_title">
+                    {JSON.parse(post).company_name}
+                  </h2>
+                  <hr/>
+                </div>
+              );
             })}
           </div>
         </div>
