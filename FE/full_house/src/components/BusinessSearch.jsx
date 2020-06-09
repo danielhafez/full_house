@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { getAllCompanies } from "../lib/api";
 import MaterialTable from "material-table";
+import Card from "@material-ui/core/Card";
 import "../css/BusinessSearch.css";
+import { Link } from "@material-ui/core";
 
 class BusinessSearch extends Component {
   constructor() {
@@ -10,6 +12,7 @@ class BusinessSearch extends Component {
       columns: [
         { title: "Logo", field: "logo" },
         { title: "Company Name", field: "company_name" },
+        { title: "Maximum Capacity", field: "maximum_capacity" },
       ],
       data: [],
     };
@@ -37,11 +40,23 @@ class BusinessSearch extends Component {
 
   render() {
     return (
-      <MaterialTable
-        title="Find your House"
-        columns={this.state.columns}
-        data={this.state.data}
-      />
+      <Card variant="outlined">
+        <MaterialTable
+          title="Find your House"
+          columns={this.state.columns}
+          data={this.state.data}
+          // editable={onRowthis.state.data}
+          actions={[
+            {
+              icon: "checkbox",
+              tooltip: "Open Company Page",
+              onClick: (event, rowData) => {
+                <Link to="/business_profile" />;
+              },
+            },
+          ]}
+        />
+      </Card>
     );
   }
 }
