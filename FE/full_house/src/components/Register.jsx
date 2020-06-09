@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Card from '@material-ui/core/Card';
 import ButtonSuccess from './ButtonSuccess';
-// // import { createStudent } from '../lib/api';
+import { createCompany } from '../lib/api';
 import { Link } from 'react-router-dom';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
@@ -45,30 +45,30 @@ class Register extends React.Component {
     if (checkAddress == false || checkCompanyName == false) {
       alert('Please insert a valid address and company name');
     } else {
-      const studentObj = {
-        company_id: (Math.random() * 100), 
-        company_name: this.state.company_name, 
-        address: this.state.address, 
-        phone:  this.state.phone, 
+      const companyObj = {
+        company_id: Math.random() * 100,
+        company_name: this.state.company_name,
+        address: this.state.address,
+        phone: this.state.phone,
         email: this.state.email,
         maximum_capacity: this.state.maximum_capacity,
-        description: this.state.description, 
-        logo = this.state.logo
+        description: this.state.description,
+        logo: this.state.logo,
       };
-      //   try {
-      //     let response = await createStudent(studentObj);
-      //     let data = await response.data;
-      //     console.log(data);
-      //     if (data) {
-      //       this.setState({ success: true });
-      //       return true;
-      //     } else {
-      //       return false;
-      //     }
-      //   } catch (e) {
-      //     alert(`Error: ${e}`);
-      //     return false;
-      //   }
+      try {
+        let response = await createCompany(companyObj);
+        let data = await response.data;
+        console.log(data);
+        if (data) {
+          this.setState({ success: true });
+          return true;
+        } else {
+          return false;
+        }
+      } catch (e) {
+        alert(`Error: ${e}`);
+        return false;
+      }
     }
   };
 
@@ -213,6 +213,7 @@ class Register extends React.Component {
               <Grid container justify='flex-end'>
                 <Grid item></Grid>
               </Grid>
+              <ButtonSuccess submit={this.submit}></ButtonSuccess>
             </form>
           </div>
         </Card>
