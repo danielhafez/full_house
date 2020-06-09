@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import RegisterUser from '../components/RegisterUser';
 import FinalConfirmation from './FinalConfirmation';
+import { createCompany } from '../lib/api';
 
 function Copyright() {
   return (
@@ -82,8 +83,24 @@ export default function HorizontalLabelPositionBelowStepper() {
     setActiveStep(0);
   };
 
-  const submit = () => {
-    console.log(userInfo, companyInfo);
+  const submit = async () => {
+    try {
+      let response = await createCompany(companyInfo);
+      let data = await response.data;
+      if (!data) {
+        alert('Impossible to register the company information');
+        return false;
+      }
+    } catch (e) {
+      alert(`Error: ${e}`);
+      return false;
+    }
+    try {
+      userInfo.company_id = companyInfo.company_id;
+      console.log(userInfo);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const getStepContent = (stepIndex) => {
@@ -148,18 +165,6 @@ export default function HorizontalLabelPositionBelowStepper() {
             <Typography className={classes.instructions}>
               {getStepContent(activeStep)}
             </Typography>
-            <div>
-              <Button
-                disabled={activeStep === 0}
-                onClick={handleBack}
-                className={classes.backButton}
-              >
-                Back
-              </Button>
-              <Button variant='contained' color='primary' onClick={handleNext}>
-                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-              </Button>
-            </div>
           </div>
         )}
         <Box mt={5} mb={20} pb={5}>
