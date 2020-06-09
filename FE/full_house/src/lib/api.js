@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios from "axios";
 
-const baseUrl = 'http://127.0.0.1:80/';
+const baseUrl = "http://127.0.0.1:80/";
 
 export function getAllCompanies() {
   return axios.get(`${baseUrl}companies`);
