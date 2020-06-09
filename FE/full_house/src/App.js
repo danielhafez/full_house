@@ -19,7 +19,12 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Signup} />
           <Route exact path="/all_companies" component={BusinessSearch} />
-          <Route exact path="/business_profile" component={BusinessProfile} />
+          <Route
+            exact
+            path="/companyprofile:id"
+            name="companyprofile"
+            component={BusinessProfile}
+          />
         </div>
       </div>
     </Router>

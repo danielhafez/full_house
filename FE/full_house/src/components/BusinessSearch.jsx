@@ -1,18 +1,35 @@
 import React, { Component } from "react";
 import { getAllCompanies } from "../lib/api";
-import MaterialTable from "material-table";
+import MaterialTable, { MTableToolbar } from "material-table";
 import Card from "@material-ui/core/Card";
 import "../css/BusinessSearch.css";
-import { Link } from "@material-ui/core";
 
 class BusinessSearch extends Component {
   constructor() {
     super();
     this.state = {
       columns: [
-        { title: "Logo", field: "logo" },
+        {
+          field: "url",
+          title: "logo",
+          render: (rowData) => (
+            <img
+              src={rowData.logo}
+              style={{ width: 50, height: 40, borderRadius: "50%" }}
+            />
+          ),
+        },
         { title: "Company Name", field: "company_name" },
-        { title: "Maximum Capacity", field: "maximum_capacity" },
+        { title: "Maximum Capacity", field: "maximum_capacity", type: "url" },
+        {
+          field: "url",
+          title: "More Information",
+          render: (rowData) => (
+            <a href={"companyprofile/" + rowData.company_id}>
+              Get more information
+            </a>
+          ),
+        },
       ],
       data: [],
     };
@@ -42,17 +59,9 @@ class BusinessSearch extends Component {
     return (
       <Card variant="outlined">
         <MaterialTable
-          title="Find your House"
+          title="Where do you want to go?"
           columns={this.state.columns}
           data={this.state.data}
-          // editable={onRowthis.state.data}
-          actions={[
-            {
-              icon: "checkbox",
-              tooltip: "Open Company Page",
-              onClick: <Link to="/business_profile"></Link>,
-            },
-          ]}
         />
       </Card>
     );
