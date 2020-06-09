@@ -9,6 +9,7 @@ import Register from './Register';
 import { Link } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import RegisterUser from '../components/RegisterUser';
+import FinalConfirmation from './FinalConfirmation';
 
 function Copyright() {
   return (
@@ -81,6 +82,10 @@ export default function HorizontalLabelPositionBelowStepper() {
     setActiveStep(0);
   };
 
+  const submit = () => {
+    console.log(userInfo, companyInfo);
+  };
+
   const getStepContent = (stepIndex) => {
     switch (stepIndex) {
       case 0:
@@ -106,7 +111,17 @@ export default function HorizontalLabelPositionBelowStepper() {
           ></Register>
         );
       case 2:
-        return 'here link to company page';
+        return (
+          <FinalConfirmation
+            handleNext={handleNextCompany}
+            handleBack={handleBack}
+            clasess={classes.backButton}
+            activeStep={activeStep}
+            steps={steps}
+            name={userInfo.first_name}
+            submit={submit}
+          ></FinalConfirmation>
+        );
       default:
         return 'Unknown stepIndex';
     }

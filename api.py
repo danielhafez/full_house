@@ -44,7 +44,7 @@ def search_company():
 
 
 @app.route("/create-company", methods=["POST"])
-def create_new_student():
+def create_new_company():
     data = request.get_json()
     response = dataLayer.register_new_company(data)
     if not response:
@@ -57,6 +57,7 @@ def create_new_student():
         mimetype="application/json"
     )
     return response
+
 
 
 
