@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
 import logo from '../images/logo.png';
+import axios from 'axios';
 
 class SendFrame extends React.Component {
   constructor(props) {
@@ -21,14 +22,25 @@ class SendFrame extends React.Component {
   }
 
   submit = async (event) => {
-    const response = await sendImage(logo);
-    console.log(response);
-    const data = response.data;
-    console.log(data);
+    let formData = new FormData();
+    let imagefile = document.querySelector('#file');
+    formData.append('image', imagefile.files[0]);
+    let response = await axios.post('http://127.0.0.1:5000/predict', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    console.log(response.data);
   };
 
   render() {
-    return <Button onClick={this.submit}>Send Image</Button>;
+    return (
+      <div>
+        {' '}
+        <input type='file' id='file' name='file'></input>
+        <Button onClick={this.submit}>Send Image</Button>{' '}
+      </div>
+    );
   }
 }
 

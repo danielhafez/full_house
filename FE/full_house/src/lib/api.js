@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'http://127.0.0.1:5000/';
+const baseUrl = 'http://127.0.0.1:80/';
 
 export function getAllCompanies() {
   return axios.get(`${baseUrl}companies`);
@@ -19,11 +19,12 @@ export function searchCompany(key, value) {
 }
 
 export function sendImage(img) {
-  return axios.post(`${baseUrl}predict`, img, {
-    headers: {
-      accept: 'application/json',
-      'Accept-Language': 'en-US,en;q=0.8',
-      'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
-    },
-  });
+  return axios.post(`${baseUrl}predict`, img);
+  //   {
+  //     headers: {
+  //       accept: 'application/json',
+  //       'Accept-Language': 'en-US,en;q=0.8',
+  //       'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
+  //     },
+  //   });
 }
