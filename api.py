@@ -75,7 +75,7 @@ def create_new_user():
 
 
 @app.route("/get-user")
-def search_company():
+def search_user():
     first_name = request.args.get("first_name")
     user = dataLayer.find_one_user_by_name(first_name)
     if not user:
@@ -86,7 +86,6 @@ def search_company():
         mimetype="application/json")
 
     return response
-fojf
 
 
 if __name__ == "__main__":
