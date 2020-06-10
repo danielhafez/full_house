@@ -28,6 +28,25 @@ def get_all_companies():
     return response
 
 
+@app.route("/update-company", methods=["POST"])
+def update_company():
+    key = request.args.get("search_key")
+    value = request.args.get("search_value")
+    new_key = request.args.get("new_key")
+    new_value = request.args.get("new_value")
+    update = dataLayer.update_student(key, value, new_key, new_value)
+    if update.matched_count > 0:
+        updated_student = dataLayer.find_one_company(new_key, new_value)
+    else:
+        abort(404)
+    response = app.response_class(
+        response='updated student:' + updated_student.to_json(),
+        status=200,
+        mimetype="application/json")
+
+    return response
+
+
 @app.route("/get-company")
 def search_company():
     key = request.args.get("key")

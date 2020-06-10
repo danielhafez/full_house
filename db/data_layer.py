@@ -74,3 +74,13 @@ class DataLayer:
             print("user not found")
             return False
 
+    def update_student(self, key, value, new_key, new_value):
+
+        myquery = {key: value}
+        newvalues = {"$set": {new_key: new_value}}
+        try:
+            result = self.__companies_collection.update_one(myquery, newvalues)
+            return result
+
+        except TypeError:
+            return False
