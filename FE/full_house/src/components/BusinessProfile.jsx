@@ -54,7 +54,7 @@ const BusinessProfile = () => {
             <img
               src={company.logo}
               alt="company_logo"
-              style={{ width: "150px", height: "120px", marginBottom: "-20px" }}
+              style={{ width: "200px", height: "120px", marginBottom: "-20px" }}
             />
             <h1>{company.company_name}</h1>
 

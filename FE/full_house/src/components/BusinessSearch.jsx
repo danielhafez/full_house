@@ -15,10 +15,7 @@ class BusinessSearch extends Component {
           field: "url",
           title: "Logo",
           render: (rowData) => (
-            <img
-              src={rowData.logo}
-              style={{ width: 50, height: 40, borderRadius: "50%" }}
-            />
+            <img src={rowData.logo} className="company_logo" />
           ),
         },
         { title: "Company Name", field: "company_name" },
