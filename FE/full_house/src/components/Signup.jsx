@@ -51,6 +51,7 @@ export default function HorizontalLabelPositionBelowStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
   const [userInfo, setUserInfo] = React.useState({});
   const [companyInfo, setCompanyInfo] = React.useState({});
+  const [success, setSuccess] = React.useState(false);
   const steps = getSteps();
 
   const handleNext = (userInformation) => {
@@ -107,6 +108,7 @@ export default function HorizontalLabelPositionBelowStepper() {
       alert(`Error: ${e}`);
       return false;
     }
+    setSuccess(true);
   };
 
   const getStepContent = (stepIndex) => {
@@ -143,6 +145,8 @@ export default function HorizontalLabelPositionBelowStepper() {
             steps={steps}
             name={userInfo.first_name}
             submit={submit}
+            success={success}
+            id={userInfo.company_id}
           ></FinalConfirmation>
         );
       default:

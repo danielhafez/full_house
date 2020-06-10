@@ -37,35 +37,56 @@ class FinalConfirmation extends React.Component {
           <CssBaseline />
           <div className='paper'>
             <img src={logo} alt='full-house icon' className='signup-logo'></img>
-
-            <Typography component='h1' variant='h5' className='subtitle-signup'>
-              Congratulations {this.props.name}, you can now confirm your
-              registration!{' '}
-            </Typography>
+            {!this.props.success && (
+              <Typography
+                component='h1'
+                variant='h5'
+                className='subtitle-signup'
+              >
+                Congratulations {this.props.name}, you can now confirm your
+                registration!{' '}
+              </Typography>
+            )}
+            {this.props.success && (
+              <Typography
+                component='h1'
+                variant='h5'
+                className='subtitle-signup'
+              >
+                Registration Completed! Welcom to Full House {this.props.name}
+              </Typography>
+            )}{' '}
+            }
             <form className='form' noValidate>
               <Grid container justify='center'>
                 <Grid className='margin-top'>
-                  <Button
-                    disabled={this.props.activeStep === 0}
-                    onClick={this.props.handleBack}
-                    className={this.props.classes}
-                  >
-                    Back
-                  </Button>
-                  <ButtonSuccess
-                    variant='contained'
-                    color='primary'
-                    onClick={this.submit}
-                  ></ButtonSuccess>
-                  <Button
-                    variant='contained'
-                    color='primary'
-                    onClick={this.submit}
-                  >
-                    {this.props.activeStep === this.props.steps.length - 1
-                      ? 'Finish'
-                      : 'Next'}
-                  </Button>
+                  {!this.props.success && (
+                    <>
+                      <Button
+                        disabled={this.props.activeStep === 0}
+                        onClick={this.props.handleBack}
+                        className={this.props.classes}
+                      >
+                        Back
+                      </Button>
+                      <Button
+                        variant='contained'
+                        color='primary'
+                        onClick={this.submit}
+                      >
+                        {this.props.activeStep === this.props.steps.length - 1
+                          ? 'Finish'
+                          : 'Next'}
+                      </Button>
+                    </>
+                  )}
+                  {this.props.success && (
+                    <Button variant='contained' color='primary'>
+                      <Link to={'/business-dashboard/' + this.props.id}>
+                        Go to your dashboards
+                      </Link>{' '}
+                    </Button>
+                  )}
                 </Grid>
               </Grid>
               {/* <ButtonSuccess submit={this.submit}></ButtonSuccess> */}

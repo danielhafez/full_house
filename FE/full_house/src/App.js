@@ -20,7 +20,7 @@ function App() {
         <NavBar />
         <Route exact path='/' component={newLandingPage} />
         <div>
-          {/* <Route exact path='/login' component={Login} /> */}
+          <Route exact path='/login' component={Login} />
           <Route exact path='/register' component={Signup} />
           <Route exact path='/all_companies' component={BusinessSearch} />
           <Route exact path='/business_profile' component={BusinessProfile} />
