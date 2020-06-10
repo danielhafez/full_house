@@ -22,7 +22,19 @@ class BusinessSearch extends Component {
           ),
         },
         { title: "Company Name", field: "company_name" },
-        { title: "Maximum Capacity", field: "maximum_capacity", type: "url" },
+        {
+          title: "Current occupancy",
+          field: "maximum_capacity current_occupancy",
+          type: "url",
+          render: (rowData) => (
+            <div>
+              {Math.ceil(
+                (rowData.current_occupancy / rowData.maximum_capacity) * 100
+              )}
+              %
+            </div>
+          ),
+        },
         {
           field: "url",
           title: "More Information",

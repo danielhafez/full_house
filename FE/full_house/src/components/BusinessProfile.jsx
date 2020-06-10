@@ -6,8 +6,6 @@ import Container from "@material-ui/core/Container";
 import "../css/BusinessProfile.css";
 import { useParams } from "react-router-dom";
 import { searchCompany } from "../lib/api";
-import Paper from "@material-ui/core/Paper";
-import Chart from "./Chart";
 import Deposits from "./Deposits";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -22,19 +20,34 @@ import {
 const BusinessProfile = () => {
   let { id } = useParams();
   const [company, setCompany] = React.useState({});
+  const [percentage_styling, setPercentage_styling] = React.useState();
+  const [percentage, setPercentage] = React.useState();
 
-  // const loadCompany = () => {
-
-  // }
   React.useEffect(() => {
     searchCompany("company_id", id).then((response) => {
       setCompany(response.data);
     });
   }, []);
 
+  React.useEffect(() => {
+    let p = Math.ceil(
+      (company.current_occupancy / company.maximum_capacity) * 100
+    );
+    setPercentage(p);
+  }, [company]);
+
+  React.useEffect(() => {
+    if (percentage >= 70) {
+      setPercentage_styling("red");
+    } else if (percentage >= 51) {
+      setPercentage_styling("yellow");
+    } else if (percentage <= 50) {
+      setPercentage_styling("green");
+    }
+  }, [percentage]);
+
   return (
     <div className="background">
-      {console.log(company)}
       <Container maxWidth="sm" style={{ marginTop: "40px" }}>
         <Card className="card_styling">
           <CardContent>
@@ -53,7 +66,9 @@ const BusinessProfile = () => {
 
         <Card className="card_styling">
           <CardContent>
-            <Deposits occupancy={80} />
+            <div className={`percentage_styling-${percentage_styling}`}>
+              <Deposits occupancy={percentage} />
+            </div>
           </CardContent>
         </Card>
 
@@ -105,8 +120,6 @@ const BusinessProfile = () => {
           Go Back to See other Companies
         </Link>
       </Container>
-      {/* Chart */}
-      {/* % occupancy */}
     </div>
   );
 };
