@@ -14,6 +14,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
 import logo from '../images/logo.png';
 import axios from 'axios';
+import Title from './Title';
 
 class SendFrame extends React.Component {
   constructor(props) {
@@ -37,8 +38,16 @@ class SendFrame extends React.Component {
     return (
       <div>
         {' '}
-        <input type='file' id='file' name='file'></input>
-        <Button onClick={this.submit}>Send Image</Button>{' '}
+        <Title>Connect</Title>
+        <input
+          style={{ marginBottom: '20px' }}
+          type='file'
+          id='file'
+          name='file'
+        ></input>
+        <Button variant='contained' color='primary' onClick={this.submit}>
+          Upload Frame
+        </Button>{' '}
       </div>
     );
   }

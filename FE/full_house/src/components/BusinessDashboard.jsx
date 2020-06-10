@@ -1,22 +1,3 @@
-// import React from 'react';
-// import Card from '@material-ui/core/Card';
-// import { useParams } from 'react-router-dom';
-// import BusinessProfile from '../components/BusinessProfile';
-
-// const BusinessDashboard = () => {
-//   // let { id } = useParams();
-//   // console.log(id);
-//   // return (
-//   //   <div>
-//   //     <Card className='business-information'>
-//   //       {/* <BusinessProfile></BusinessProfile> */}
-//   //     </Card>
-//   //     <h3>ID: {id}</h3>
-//   //   </div>
-//   // );
-// };
-
-// export default BusinessDashboard;
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -41,6 +22,7 @@ import { mainListItems, secondaryListItems } from './listItems';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
+import SendFrame from '../components/SendFrame';
 
 function Copyright() {
   return (
@@ -175,19 +157,29 @@ export default function Dashboard() {
         <div className={classes.appBarSpacer} />
         <Container maxWidth='lg' className={classes.container}>
           <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <Paper className={classes.paper}>
+                <Title>Hi Daniel! Welcome to your FullHouse dashboard</Title>
+              </Paper>
+            </Grid>
+            <Grid item xs={12} md={4} lg={3}>
+              <Paper className={fixedHeightPaper}>
+                <SendFrame></SendFrame>
+              </Paper>
+            </Grid>
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
                 <Chart />
               </Paper>
             </Grid>
-            {/* Recent Deposits */}
+            {/* % occupancy */}
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
                 <Deposits occupancy={80} />
               </Paper>
             </Grid>
-            {/* Recent Orders */}
+            {/* Similar Business */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
                 <Orders />
