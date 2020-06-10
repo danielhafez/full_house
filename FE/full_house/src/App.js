@@ -11,6 +11,7 @@ import BusinessProfile from './components/BusinessProfile';
 import SendFrame from './components/SendFrame';
 import Dashboard from './components/BusinessDashboard';
 import newLandingPage from './components/newLandingpage';
+import NewNavBar from './components/NewNavBar';
 
 function App() {
   return (

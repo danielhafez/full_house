@@ -35,17 +35,27 @@ export default function ButtonAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant='h6' className={classes.title}>
-            Full House
-          </Typography>
+          <Typography variant='h6' className={classes.title}></Typography>
           <Button color='primary'>
-            <Link to='/'>Home</Link>
+            <Link style={{ color: 'white', textDecoration: 'none' }} to='/'>
+              Home
+            </Link>
           </Button>
           <Button color='primary'>
-            <Link to='/login'>Login</Link>
+            <Link
+              style={{ color: 'white', textDecoration: 'none' }}
+              to='/login'
+            >
+              Login
+            </Link>
           </Button>
-          <Button color='primary'>
-            <Link to='/register'>Register</Link>
+          <Button>
+            <Link
+              style={{ color: 'white', textDecoration: 'none' }}
+              to='/register'
+            >
+              Register
+            </Link>
           </Button>
         </Toolbar>
       </AppBar>

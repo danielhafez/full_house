@@ -52,26 +52,12 @@ class Register extends React.Component {
         phone: this.state.phone,
         email: this.state.email,
         maximum_capacity: this.state.maximum_capacity,
+        current_occupancy: this.state.maximum_capacity - 8,
         description: this.state.description,
         logo: this.state.logo,
       };
 
       this.props.handleNext(companyObj);
-
-      //   try {
-      //     let response = await createCompany(companyObj);
-      //     let data = await response.data;
-      //     console.log(data);
-      //     if (data) {
-      //       this.setState({ success: true });
-      //       return true;
-      //     } else {
-      //       return false;
-      //     }
-      //   } catch (e) {
-      //     alert(`Error: ${e}`);
-      //     return false;
-      //   }
     }
   };
 
