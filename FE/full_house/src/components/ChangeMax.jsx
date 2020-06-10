@@ -19,9 +19,10 @@ const useStyles = makeStyles({
 
 export default function ChangeMax(props) {
   const classes = useStyles();
-  {
-    console.log(props);
-  }
+  const [value, setValue] = React.useState();
+  const submit = () => {
+    props.callback(value);
+  };
   return (
     <React.Fragment>
       <Title>Change maximum occupancy</Title>
@@ -37,6 +38,7 @@ export default function ChangeMax(props) {
           shrink: true,
         }}
         variant='outlined'
+        onChange={(event) => setValue(event.target.value)}
       />
       <Button
         style={{ marginTop: '10px' }}
@@ -46,7 +48,7 @@ export default function ChangeMax(props) {
         lg={3}
         variant='contained'
         color='primary'
-        onClick
+        onClick={submit}
       >
         Submit
       </Button>

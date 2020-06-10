@@ -20,7 +20,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from './listItems';
 import { useParams } from 'react-router-dom';
-import { searchCompany } from '../lib/api';
+import { searchCompany, updateCompany } from '../lib/api';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
@@ -149,6 +149,13 @@ export default function Dashboard() {
     setCurrent(data);
   };
 
+  const changeMaximumCapacity = (data) => {
+    updateCompany('company_id', company.company_id, 'maximum_capacity', data);
+    searchCompany('company_id', id).then((response) => {
+      setCompany(response.data);
+    });
+  };
+
   React.useEffect(() => {
     searchCompany('company_id', id).then((response) => {
       setCompany(response.data);
@@ -210,7 +217,10 @@ export default function Dashboard() {
             </Grid>
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
-                <ChangeMax capacity={company.maximum_capacity}></ChangeMax>
+                <ChangeMax
+                  capacity={company.maximum_capacity}
+                  callback={changeMaximumCapacity}
+                ></ChangeMax>
               </Paper>
             </Grid>
             <Grid item xs={12} md={4} lg={3}>

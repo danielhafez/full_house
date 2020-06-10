@@ -1,6 +1,6 @@
-import axios from "axios";
+import axios from 'axios';
 
-const baseUrl = "http://127.0.0.1:80/";
+const baseUrl = 'http://127.0.0.1:80/';
 
 export function getAllCompanies() {
   return axios.get(`${baseUrl}companies`);
@@ -20,7 +20,7 @@ export function searchCompany(key, value) {
 
 export function updateCompany(key, value, newKey, newValue) {
   return axios.post(
-    `${baseUrl}update-company?search_key=${key}&search_value=${value}?new_key=${newKey}&new_value=${newValue}`
+    `${baseUrl}update-company?search_key=${key}&search_value=${value}&new_key=${newKey}&new_value=${newValue}`
   );
 }
 
