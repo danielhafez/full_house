@@ -27,6 +27,8 @@ import Orders from './Orders';
 import SendFrame from '../components/SendFrame';
 import Title from './Title';
 import ChangeMax from './ChangeMax';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 function Copyright() {
   return (
@@ -182,7 +184,29 @@ export default function Dashboard() {
         <Container maxWidth='lg' className={classes.container}>
           <Grid container spacing={3}>
             <Grid className={classes.paper} item xs={12}>
-              <Title>FullHouse dashboard</Title>
+              <Title style={{ fontSize: '70px' }}>FullHouse dashboard</Title>
+            </Grid>
+            <Grid className={classes.paper} item xs={12}>
+              <Paper style={{ padding: '20px' }}>
+                <img
+                  src={company.logo}
+                  alt='logo'
+                  style={{ width: '100px', height: 'auto' }}
+                />
+                <Title>{company.company_name}</Title>
+                <div className='business_content'>
+                  <b style={{ marginRight: '10px' }}> Address: </b>
+                  {company.address}
+                </div>
+                <div className='business_content'>
+                  <b style={{ marginRight: '10px' }}>Phone Number: </b>
+                  {company.phone}
+                </div>
+                <div className='business_content'>
+                  <b> Description:</b>
+                </div>
+                <div>{company.description}</div>
+              </Paper>
             </Grid>
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
