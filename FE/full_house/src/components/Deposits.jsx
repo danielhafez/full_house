@@ -15,13 +15,14 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Deposits() {
+export default function Deposits(props) {
   const classes = useStyles();
   return (
     <React.Fragment>
+      {console.log(props)}
       <Title>Current Occupancy</Title>
       <Typography component='p' variant='h4'>
-        90%{' '}
+        {props.occupancy}%
       </Typography>
       <Typography color='textSecondary' className={classes.depositContext}>
         Last Update at: {new Date().getHours()}:00
@@ -30,7 +31,7 @@ export default function Deposits() {
         <Link color='primary' href='#' onClick={preventDefault}>
           View report
         </Link>
-        <SendFrame></SendFrame>
+        {/* <SendFrame></SendFrame> */}
       </div>
     </React.Fragment>
   );

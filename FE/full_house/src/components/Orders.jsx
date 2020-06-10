@@ -8,7 +8,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Title from './Title';
 import BusinessSearch from '../components/BusinessSearch';
-import SendFrame from '../components/SendFrame';
 
 // Generate Order Data
 function createData(id, date, name, shipTo, paymentMethod, amount) {

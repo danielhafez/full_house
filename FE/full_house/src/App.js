@@ -29,12 +29,8 @@ function App() {
           <Switch>
             <Route
               exact
-<<<<<<< HEAD
               path='/companyprofile:id'
               name='companyprofile'
-=======
-              path="/companyprofile/:id"
->>>>>>> 36746c8830422a88aa68663b2469ecd8f5febdb8
               children={<BusinessProfile />}
             />
           </Switch>
