@@ -127,6 +127,7 @@ export default function Dashboard() {
   let { id } = useParams();
   const [open, setOpen] = React.useState(true);
   const [company, setCompany] = React.useState({});
+  const [current, setCurrent] = React.useState();
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -135,10 +136,20 @@ export default function Dashboard() {
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
+  const percentage = () => {
+    if (current > 1) {
+      return company.maximum_capacity / current;
+    } else {
+      return 60;
+    }
+  };
+  const getInfoFromModel = (data) => {
+    setCurrent(data);
+  };
+
   React.useEffect(() => {
     searchCompany('company_id', id).then((response) => {
       setCompany(response.data);
-      console.log(company);
     });
   }, []);
 
@@ -171,16 +182,16 @@ export default function Dashboard() {
         <Container maxWidth='lg' className={classes.container}>
           <Grid container spacing={3}>
             <Grid className={classes.paper} item xs={12}>
-              <Title>Hi Daniel! Welcome to your FullHouse dashboard</Title>
+              <Title>FullHouse dashboard</Title>
             </Grid>
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
-                <ChangeMax></ChangeMax>
+                <ChangeMax capacity={company.maximum_capacity}></ChangeMax>
               </Paper>
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-                <SendFrame></SendFrame>
+                <SendFrame callback={getInfoFromModel}></SendFrame>
               </Paper>
             </Grid>
 
@@ -193,7 +204,7 @@ export default function Dashboard() {
             {/* % occupancy */}
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-                <Deposits occupancy={80} />
+                <Deposits occupancy={percentage()} />
               </Paper>
             </Grid>
             {/* Similar Business */}

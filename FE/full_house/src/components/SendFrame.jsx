@@ -19,7 +19,9 @@ import Title from './Title';
 class SendFrame extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      current: 0,
+    };
   }
 
   submit = async (event) => {
@@ -31,7 +33,8 @@ class SendFrame extends React.Component {
         'Content-Type': 'multipart/form-data',
       },
     });
-    console.log(response.data);
+    this.setState({ current: response.data });
+    this.props.callback(response.data);
   };
 
   render() {

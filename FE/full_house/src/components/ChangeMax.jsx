@@ -19,11 +19,14 @@ const useStyles = makeStyles({
 
 export default function ChangeMax(props) {
   const classes = useStyles();
+  {
+    console.log(props);
+  }
   return (
     <React.Fragment>
       <Title>Change maximum occupancy</Title>
       <Typography style={{ marginBottom: '20px' }} component='p' variant='h6'>
-        Current: {props.capcity}
+        Current: {props.capacity}
       </Typography>
 
       <TextField
