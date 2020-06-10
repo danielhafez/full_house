@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { getAllCompanies } from "../lib/api";
-import MaterialTable, { MTableToolbar } from "material-table";
+import MaterialTable from "material-table";
 import Card from "@material-ui/core/Card";
+import Container from "@material-ui/core/Container";
+
 import "../css/BusinessSearch.css";
 
 class BusinessSearch extends Component {
@@ -11,7 +13,7 @@ class BusinessSearch extends Component {
       columns: [
         {
           field: "url",
-          title: "logo",
+          title: "Logo",
           render: (rowData) => (
             <img
               src={rowData.logo}
@@ -40,30 +42,28 @@ class BusinessSearch extends Component {
   };
 
   getCompanies = () => {
-    getAllCompanies()
-      .then((response) => {
-        const companiesdata = response.data;
-        const storage = [];
-        for (let i = 0; i < companiesdata.length; i++) {
-          storage.push(JSON.parse(companiesdata[i]));
-        }
-        this.setState({ data: storage });
-        return response.json;
-      })
-      .catch(() => {
-        alert("Retriving data");
-      });
+    getAllCompanies().then((response) => {
+      const companiesdata = response.data;
+      const storage = [];
+      for (let i = 0; i < companiesdata.length; i++) {
+        storage.push(JSON.parse(companiesdata[i]));
+      }
+      this.setState({ data: storage });
+      return response.json;
+    });
   };
 
   render() {
     return (
-      <Card variant="outlined">
-        <MaterialTable
-          title="Where do you want to go?"
-          columns={this.state.columns}
-          data={this.state.data}
-        />
-      </Card>
+      <Container maxWidth="sm" style={{ marginTop: "40px" }}>
+        <Card variant="outlined">
+          <MaterialTable
+            title="SEARCH FOR A BUSINESS NEAR YOU"
+            columns={this.state.columns}
+            data={this.state.data}
+          />
+        </Card>
+      </Container>
     );
   }
 }

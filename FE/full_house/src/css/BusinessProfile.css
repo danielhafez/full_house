@@ -1,0 +1,9 @@
+.business_information {
+  margin: 10%;
+  display: flex;
+}
+
+.business_content {
+  display: flex !important;
+  padding: 8px;
+}
