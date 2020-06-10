@@ -23,6 +23,8 @@ import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
 import SendFrame from '../components/SendFrame';
+import Title from './Title';
+import ChangeMax from './ChangeMax';
 
 function Copyright() {
   return (
@@ -157,9 +159,12 @@ export default function Dashboard() {
         <div className={classes.appBarSpacer} />
         <Container maxWidth='lg' className={classes.container}>
           <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <Paper className={classes.paper}>
-                <Title>Hi Daniel! Welcome to your FullHouse dashboard</Title>
+            <Grid className={classes.paper} item xs={12}>
+              <Title>Hi Daniel! Welcome to your FullHouse dashboard</Title>
+            </Grid>
+            <Grid item xs={12} md={8} lg={9}>
+              <Paper className={fixedHeightPaper}>
+                <ChangeMax></ChangeMax>
               </Paper>
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
@@ -167,6 +172,7 @@ export default function Dashboard() {
                 <SendFrame></SendFrame>
               </Paper>
             </Grid>
+
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
