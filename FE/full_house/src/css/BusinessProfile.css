@@ -7,3 +7,16 @@
   display: flex !important;
   padding: 8px;
 }
+
+.fixed-height {
+  display: flex;
+  overflow: auto;
+  flex-direction: column;
+  height: 240;
+}
+
+.card_styling {
+  margin: 10%;
+  box-shadow: 7px 7px 12px rgba(0, 0, 0, 0.2),
+    0px 4px 1px 0px rgba(0, 0, 0, 0.14), 0px 18px 3px 0px rgba(0, 0, 0, 0.12) !important;
+}
