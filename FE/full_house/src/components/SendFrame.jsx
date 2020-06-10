@@ -20,7 +20,7 @@ class SendFrame extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      current: 0,
+      current: null,
     };
   }
 
@@ -51,6 +51,9 @@ class SendFrame extends React.Component {
         <Button variant='contained' color='primary' onClick={this.submit}>
           Upload Frame
         </Button>{' '}
+        {this.state.current && (
+          <Title>Number of people indentified: {this.state.current}</Title>
+        )}
       </div>
     );
   }
