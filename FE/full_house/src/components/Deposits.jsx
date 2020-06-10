@@ -19,7 +19,6 @@ export default function Deposits(props) {
   const classes = useStyles();
   return (
     <React.Fragment>
-      {console.log(props)}
       <Title>Current Occupancy</Title>
       <Typography component='p' variant='h4'>
         {props.occupancy}%
