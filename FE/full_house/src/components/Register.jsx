@@ -46,7 +46,7 @@ class Register extends React.Component {
       alert('Please insert a valid address and company name');
     } else {
       const companyObj = {
-        company_id: Math.random() * 100,
+        company_id: Math.floor(Math.random() * 1000).toString(),
         company_name: this.state.company_name,
         address: this.state.address,
         phone: this.state.phone,
