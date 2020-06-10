@@ -20,3 +20,35 @@
   box-shadow: 7px 7px 12px rgba(0, 0, 0, 0.2),
     0px 4px 1px 0px rgba(0, 0, 0, 0.14), 0px 18px 3px 0px rgba(0, 0, 0, 0.12) !important;
 }
+
+.display-goBack {
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+
+  color: black;
+  padding: 10px;
+}
+.social-media {
+  padding: 5px;
+}
+.facebook {
+  color: rgb(77, 181, 245);
+}
+.pinterest {
+  color: red;
+}
+.twitter {
+  color: rgb(85, 85, 255);
+}
+.instagram {
+  color: rgb(243, 114, 54);
+}
+.messenger {
+  color: blue;
+}
+.display-social-media {
+  justify-content: center;
+  display: flex;
+  margin-top: 10px;
+}
