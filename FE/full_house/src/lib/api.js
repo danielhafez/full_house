@@ -18,6 +18,12 @@ export function searchCompany(key, value) {
   return axios.get(`${baseUrl}get-company?key=${key}&value=${value}`);
 }
 
+export function updateCompany(key, value, newKey, newValue) {
+  return axios.post(
+    `${baseUrl}update-company?search_key=${key}&search_value=${value}?new_key=${newKey}&new_value=${newValue}`
+  );
+}
+
 export function sendImage(img) {
   return axios.post(`${baseUrl}predict`, img);
   //   {
